@@ -5,7 +5,6 @@ import CardList from '../components/CardList'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import ModalAlert from '../components/ModalAlert'
 import ModalForm from '../components/ModalForm'
-import BackButton from '../components/BackButton'
 
 export default function clientes() {
 
@@ -140,7 +139,6 @@ export default function clientes() {
                     saveCliente={saveCliente}
                 />
             </View>
-            <BackButton />
         </View>
     )
 }
@@ -165,7 +163,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 24,
         fontWeight: 'bold',
-        marginBottom: 6,
+        marginBottom: 10,
         marginLeft: 20,
     },
     subtitle: {

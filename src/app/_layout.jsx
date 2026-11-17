@@ -3,6 +3,7 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import NovaX from '../../assets/images/NovaX.png'
 
 import { alignLeftIcon } from "../components/ui/icons";
+import BackButton from "../components/BackButton";
 
 export default function TabLayout() {
 
@@ -27,7 +28,7 @@ export default function TabLayout() {
           <Text style={styles.subtitle}>NovaX S.A.S</Text>
         </View>
         <View style={styles.content}>
-          {alignLeftIcon()}
+          <BackButton />
         </View>
       </View>
       <Slot />
@@ -67,7 +68,5 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 10,
-    borderLeftWidth: 1,
-    borderLeftColor: '#fff',
   },
 });

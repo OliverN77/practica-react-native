@@ -1,6 +1,8 @@
 import { Modal, StyleSheet, Text, TextInput, View } from 'react-native'
 import { usePathname } from 'expo-router'
 import BotonReutilizable from './BotonReutilizable'
+import RadioInput from './RadioInput'
+import SelectorInput from './SelectorInput'
 
 
 export default function ModalForm({
@@ -10,6 +12,10 @@ export default function ModalForm({
     saveCliente,
     nombre = null,
     correo = null,
+    numeroDocumento = null,
+    setNumeroDocumento = null,
+    setTipoDocumento = null,
+    tipoDocumento = null,
     rol = null,
     avatar = null,
     estado = false,
@@ -52,6 +58,17 @@ export default function ModalForm({
                         value={correo}
                         onChangeText={setCorreo}
                     />
+                    <Text>Número de documento</Text>
+                    <TextInput
+                        style={styles.modalFormInput}
+                        value={numeroDocumento}
+                        onChangeText={setNumeroDocumento}
+                    />
+                    <Text>Tipo de documento</Text>
+                    <SelectorInput
+                        value={tipoDocumento}
+                        onChange={setTipoDocumento}
+                    />
                     <Text>Rol</Text>
                     <TextInput
                         style={styles.modalFormInput}
@@ -65,11 +82,7 @@ export default function ModalForm({
                         onChangeText={setAvatar}
                     />
                     <Text>Estado</Text>
-                    <TextInput
-                        style={styles.modalFormInput}
-                        value={estado == null ? '' : String(estado)}
-                        onChangeText={setEstado}
-                    />
+                    <RadioInput value={estado} onChange={setEstado} />
                     <BotonReutilizable
                         label={'Guardar Usuario'}
                         onPress={saveUsers}
@@ -98,11 +111,7 @@ export default function ModalForm({
                         onChangeText={setCategoria}
                     />
                     <Text>Estado</Text>
-                    <TextInput
-                        style={styles.modalFormInput}
-                        value={estado == null ? '' : String(estado)}
-                        onChangeText={setEstado}
-                    />
+                    <RadioInput value={estado} onChange={setEstado} />
                     <BotonReutilizable
                         label={'Guardar Cliente'}
                         onPress={saveCliente}

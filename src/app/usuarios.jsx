@@ -5,7 +5,6 @@ import CardList from '../components/CardList'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import ModalAlert from '../components/ModalAlert'
 import ModalForm from '../components/ModalForm'
-import BackButton from '../components/BackButton'
 
 export default function usuarios() {
 
@@ -14,6 +13,9 @@ export default function usuarios() {
   const [rol, setRol] = useState('')
   const [avatar, setAvatar] = useState('')
   const [estado, setEstado] = useState(null)
+  const [tipoDocumento, setTipoDocumento] = useState('')
+  const [numeroDocumento, setNumeroDocumento] = useState('')
+
   const [visibleModal, setVisibleModal] = useState(false)
 
   const [messageModal, setMessageModal] = useState('')
@@ -39,6 +41,8 @@ export default function usuarios() {
     setIdEditing(user.id)
     setNombre(user.nombre)
     setCorreo(user.correo)
+    setTipoDocumento(user.tipoDocumento)
+    setNumeroDocumento(user.numeroDocumento)
     setRol(user.rol)
     setAvatar(user.avatar)
     setEstado(user.estado)
@@ -60,6 +64,8 @@ export default function usuarios() {
       setIdEditing(null)
       setNombre('')
       setCorreo('')
+      setTipoDocumento('')
+      setNumeroDocumento('')
       setRol('')
       setAvatar('')
       setEstado(null)
@@ -74,7 +80,7 @@ export default function usuarios() {
 
     if (idEditing) {
       newList = users.map((u) =>
-        u.id === idEditing ? { ...u, nombre: nombre, correo: correo, rol: rol, avatar: avatar, estado: estado } : u
+        u.id === idEditing ? { ...u, nombre: nombre, correo: correo, rol: rol, avatar: avatar, estado: estado, tipoDocumento: tipoDocumento, numeroDocumento: numeroDocumento } : u
       );
       setIdEditing(null)
     } else {
@@ -82,6 +88,8 @@ export default function usuarios() {
         id: Date.now().toString(),
         nombre,
         correo,
+        tipoDocumento,
+        numeroDocumento,
         rol,
         avatar,
         estado
@@ -93,6 +101,8 @@ export default function usuarios() {
     setUsers(newList)
     setNombre('')
     setCorreo('')
+    setTipoDocumento('')
+    setNumeroDocumento('')
     setRol('')
     setAvatar('')
     setEstado(null)
@@ -137,17 +147,20 @@ export default function usuarios() {
           rol={rol}
           avatar={avatar}
           estado={estado}
+          tipoDocumento={tipoDocumento}
+          numeroDocumento={numeroDocumento}
           setNombre={setNombre}
           setCorreo={setCorreo}
           setRol={setRol}
           setAvatar={setAvatar}
           setEstado={setEstado}
+          setTipoDocumento={setTipoDocumento}
+          setNumeroDocumento={setNumeroDocumento}
           visibleModal={visibleModal}
           openCloseModal={openCloseModal}
           saveUsers={saveUsers}
         />
       </View>
-      <BackButton />
     </View>
   )
 }

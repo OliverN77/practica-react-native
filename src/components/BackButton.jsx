@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native'
 import { Link } from 'expo-router'
+import { alignLeftIcon } from './ui/icons'
 
 export default function BackButton() {
     return (
         <Link href={'/'} asChild>
             <View style={styles.backButton}>
-                <Text style={styles.backButtonText}>Volver al inicio</Text>
+                <Text style={styles.backButtonText}>{alignLeftIcon()}</Text>
             </View>
         </Link>
     )
@@ -13,13 +14,11 @@ export default function BackButton() {
 
 const styles = StyleSheet.create({
     backButton: {
-        position: 'absolute',
-        bottom: 20,
-        left: 20,
         backgroundColor: '#2563EB',
         paddingVertical: 10,
         paddingHorizontal: 20,
-        borderRadius: 5,
+        borderLeftWidth: 1,
+        borderLeftColor: '#fff',
     },
     backButtonText: {
         color: '#fff',
